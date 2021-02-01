@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <h1>Half your age plus seven</h1>
+    <p>Din alder:</p>
+    <input type="text" id="dinAlder">
+    <p>Din dates alder:</p>
+    <input type="text" id="datesAlder">
+    <button>Find ud af om du kan tage på daten</button>
+    <script>
+        document.querySelector("button").addEventListener("click", buttonClicked);
+
+        function buttonClicked() {
+            let dinAlder = document.querySelector("#dinAlder").value;
+            let datesAlder = document.querySelector("#datesAlder").value;
+
+            if (isNaN(dinAlder) || isNaN(datesAlder)) {
+                console.log("Skriv udelukkende din og din dates alder med tal")
+            } else if (dinAlder < 15 || datesAlder < 15) {
+                console.log("Du og/eller din date er ikke gammel nok.");
+            } else if (dinAlder / 2 + 7 > datesAlder) {
+                console.log("Føj, hvor klamt. Du skal ikke på date! Din date er for ung i forhold til dig.")
+            } else if (datesAlder / 2 + 7 > dinAlder) {
+                console.log("Føj, hvor klamt. Du skal ikke på date! Du er for ung i forhold til din date.")
+            } else {
+                console.log("Rigtig god date! Du kan rolig tage afsted.")
+            }
+        }
+    </script>
+</body></html>
