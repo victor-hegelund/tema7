@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <h1>Gæt et tal mellem 1 og 20</h1>
+    <input type="text" id="brugerensTal">
+    <button>Gæt</button>
+    <script>
+        const rigtigtTal = Math.floor(Math.random() * 20 + 1);
+        //console.log(rigtigtTal);
+
+        let antalGæt = 0
+        document.querySelector("button").addEventListener("click", buttonClicked);
+
+        function buttonClicked() {
+            antalGæt++;
+
+            let brugerensTal = document.querySelector("#brugerensTal").value;
+
+            if (brugerensTal < rigtigtTal) {
+                console.log("Det var for lavt!")
+            } else if (brugerensTal > rigtigtTal) {
+                console.log("Det var for højt!")
+            } else {
+                console.log(`Godt gættet! Du brugte ${antalGæt} forsøg.`)
+                console.log("Tryk på cmd + r for at prøve igen :D")
+            }
+        }
+    </script>
+</body></html>
