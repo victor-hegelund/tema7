@@ -23,7 +23,10 @@
 
             let brugerensTal = document.querySelector("#brugerensTal").value;
 
-            if (brugerensTal < rigtigtTal) {
+            if (isNaN(brugerensTal) || brugerensTal < 1 || brugerensTal> 20) {
+                console.log("UGYLDIGT TAL!")
+                console.log("Skriv et tal fra og med 1 og til og med 20.")
+                } else if (brugerensTal < rigtigtTal) {
                 console.log("Det var for lavt!")
             } else if (brugerensTal > rigtigtTal) {
                 console.log("Det var for højt!")
