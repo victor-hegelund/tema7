@@ -16,13 +16,20 @@
     </main>
 
     <script>
-        let imgNummer = 1;
         let img = document.querySelector("img");
-        document.querySelector("button").addEventListener("click", nextImg);
+        let button = document.querySelector("button");
+        let imgNummer = 1;;
+        button.addEventListener("click", nextImg);
 
         function nextImg() {
+            button.textContent = "Videre";
             imgNummer++;
             img.src = `https://raw.githubusercontent.com/martinbregnhoi/Tema7E20/master/billeder/img${imgNummer}.png`;
+
+            if (imgNummer >= 8) {
+                button.textContent = "Start forfra";
+                imgNummer = 1;
+            }
         }
     </script>
 </body></html>
