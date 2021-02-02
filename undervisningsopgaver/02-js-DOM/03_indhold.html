@@ -60,16 +60,27 @@
     <script>
         let body = document.querySelector("body");
         let header = document.querySelector("header");
+        let h1 = document.querySelector("h1");
+        let articleH3_1 = document.querySelector("article:nth-child(1) h3");
+        let articleH3_2 = document.querySelector("article:nth-child(2) h3");
         let main = document.querySelector("main");
         let section = document.querySelector("section");
         let article = document.querySelector("article");
-        let img = document.querySelector("img:nth-child(1)");
+        let img1 = document.querySelector("article:nth-child(1) img");
+        let img2 = document.querySelector("article:nth-child(2) img");
 
         console.log(body);
         console.log(header);
         console.log(main);
         console.log(section);
         console.log(article);
-        console.log(img);
+        console.log(articleH3_1);
+
+        h1.textContent = "Ny overskrift";
+        articleH3_1.textContent = "Ny underoverskrift";
+        articleH3_2.innerHTML = "<s>Ny anden underoverskrift</s>";
+
+        img1.src = "https://placeimg.com/700/300/anyyy"
+        img2.src = "https://placeimg.com/700/300/anyyyy"
     </script>
 </body></html>
