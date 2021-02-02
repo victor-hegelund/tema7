@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <main>
+        <h1>Tro på det...</h1>
+        <img src="https://raw.githubusercontent.com/martinbregnhoi/Tema7E20/master/billeder/img1.png" alt="">
+        <button>Videre</button>
+        <p>Tegninger: Rasmus Bregnhøi</p>
+    </main>
+
+    <script>
+        let imgNummer = 1;
+        let img = document.querySelector("img");
+        document.querySelector("button").addEventListener("click", nextImg);
+
+        function nextImg() {
+            imgNummer++;
+            img.src = `https://raw.githubusercontent.com/martinbregnhoi/Tema7E20/master/billeder/img${imgNummer}.png`;
+        }
+    </script>
+</body></html>
