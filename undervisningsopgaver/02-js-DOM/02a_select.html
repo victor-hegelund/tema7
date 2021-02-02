@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+        main {
+            margin: 0 20px;
+        }
+
+        header,
+        article,
+        footer {
+            border: 1px solid #000;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .article_list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-gap: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Title</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Undertitle</h2>
+            <div class="article_list">
+                <article>
+                    <img src="https://placeimg.com/400/300/any" alt="">
+                    <h3>Article 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus eligendi ullam aspernatur tenetur molestias corporis illum laboriosam, expedita accusantium provident sapiente voluptatem nihil rem aliquid nobis ab cumque totam fugiat sint quo veritatis optio veniam. Illum voluptate nihil ea numquam, similique ipsa ipsum, totam dolores vitae nulla id suscipit nobis!</p>
+                </article>
+                <article>
+                    <img src="https://placeimg.com/400/300/anyy" alt="">
+                    <h3>Article 2</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis similique numquam tenetur optio praesentium sint voluptatem quisquam itaque quas tempora doloribus, impedit quidem amet obcaecati commodi in magni, esse, molestias cumque blanditiis harum perspiciatis repellendus? Vel magnam sequi dolor totam iste praesentium optio? Sint optio qui asperiores dolore expedita eum.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>This is the footer</p>
+    </footer>
+    <script>
+        let body = document.querySelector("body");
+        let header = document.querySelector("header");
+        let h1 = document.querySelector("h1");
+        let articleH3_1 = document.querySelector("article:nth-child(1) h3");
+        let articleH3_2 = document.querySelector("article:nth-child(2) h3");
+        let main = document.querySelector("main");
+        let section = document.querySelector("section");
+        let article = document.querySelector("article");
+        let img = document.querySelector("img:nth-child(1)");
+
+        console.log(body);
+        console.log(header);
+        console.log(main);
+        console.log(section);
+        console.log(article);
+        console.log(img);
+        console.log(articleH3_1);
+
+        h1.textContent = "Ny overskrift";
+        articleH3_1.textContent = "Ny underoverskrift";
+        articleH3_2.innerHTML = "<s>Ny anden underoverskrift</s>";
+    </script>
+</body></html>
