@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+        article {
+            border: solid 1px #000;
+        }
+    </style>
+</head>
+
+<body>
+    <section></section>
+
+    <template>
+        <article>
+            <h2></h2>
+            <h3></h3>
+            <p class="info"></p>
+            <p>Udstyr:</p>
+            <ul></ul>
+        </article>
+    </template>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let article = document.querySelector("article");
+
+            const container = document.querySelector("section");
+            const template = document.querySelector("template");
+
+            const fil = "02_alleBiler.json";
+            hentdata(fil);
+            async function hentdata(fil) {
+                const result = await fetch(fil);
+                const json = await result.json();
+                vis(json);
+            }
+
+            function vis(biler) {
+                biler.forEach(bil => {
+                    let klon = template.cloneNode(true).content;
+                    klon.querySelector("h2").textContent = bil.mærke;
+                    klon.querySelector("h3").textContent = bil.model;
+                    klon.querySelector(".info").textContent = `${bil.motor} | ${bil.km} km`;
+
+                    bil.udstyr.forEach(udstyret => {
+                        klon.querySelector("ul").innerHTML += "<li>" + udstyret + "</li>"
+                    })
+                    container.appendChild(klon);
+                })
+            }
+        })
+    </script>
+</body></html>
