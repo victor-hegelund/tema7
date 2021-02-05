@@ -42,6 +42,7 @@
 
             const url = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
             const imgUrl = "https://persongalleri-5d3e.restdb.io/media/";
+            const dato = /[0-9][0-9][0-9][0-9][-][0-9][0-9]-[0-9][0-9]/;
 
             const options = {
                 headers: {
@@ -65,7 +66,7 @@
                     klon.querySelector(".title").textContent = person.titel;
                     klon.querySelector(".hobby").textContent = person.hobby;
                     klon.querySelector(".troende").textContent += person.troende;
-                    klon.querySelector(".fødselsdag").textContent = person.fødselsdag;
+                    klon.querySelector(".fødselsdag").textContent = person.fødselsdag.match(dato);
                     container.appendChild(klon);
                 })
             }
