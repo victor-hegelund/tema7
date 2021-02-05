@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+        @import url("https://use.typekit.net/uki5cgs.css");
+
+        body {
+            background-color: #457b9d;
+            margin: 20px;
+        }
+
+        article {
+            background-color: #f1faee;
+            border: solid 2px #1d3557;
+        }
+
+        h1,
+        h2 {
+            color: #1d3557;
+            margin-top: 0;
+            text-transform: uppercase;
+            font-family: industry-inc-base, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        p {
+            font-family: proxima-nova, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .pris {
+            color: #e63946;
+            font-weight: 700;
+        }
+
+        .img {
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding-top: 56.25%;
+            position: relative;
+        }
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            transform: translate(-50%, -50%);
+        }
+
+        section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
+        }
+
+        .menukort_tekst {
+            padding: 10px;
+        }
+
+        .button {
+            text-align: center;
+        }
+
+        button {
+            background-color: #e63946;
+            color: #1d3557;
+            border: none;
+            padding: 10px 30px 6px 30px;
+            text-transform: uppercase;
+            font-family: industry-inc-base, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        button:hover {
+            background-color: #1d3557;
+            color: #e63946;
+            cursor: pointer;
+        }
+
+        button:focus {
+            outline: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <section class="menukort"></section>
+    <template>
+        <article>
+            <div class="img">
+                <img src="" alt="">
+            </div>
+            <div class="menukort_tekst">
+                <h2></h2>
+                <p class="pris"></p>
+                <p class="bio"></p>
+                <div class="button">
+                    <button>Se mere</button>
+                </div>
+            </div>
+        </article>
+    </template>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.querySelector(".menukort");
+            const template = document.querySelector("template");
+
+            const url = "https://babushka-dd8a.restdb.io/rest/menu";
+            const imgUrl = "https://babushka-dd8a.restdb.io/media/";
+
+            const options = {
+                headers: {
+                    'x-apikey': "600ec2fb1346a1524ff12de4"
+                }
+            };
+
+            hentdata(url);
+            async function hentdata() {
+                const result = await fetch(url, options);
+                const json = await result.json();
+                console.log(json)
+                vis(json);
+            }
+
+            function vis(retter) {
+                retter.forEach(ret => {
+                    let klon = template.cloneNode(true).content;
+                    klon.querySelector("img").src = imgUrl + ret.billede;
+                    klon.querySelector("h2").textContent = ret.navn;
+                    klon.querySelector(".pris").textContent = `Pris: ${ret.pris},-`;
+                    klon.querySelector(".bio").textContent = ret.kortbeskrivelse;
+                    container.appendChild(klon);
+                })
+            }
+        })
+
+    </script>
+</body>
+
+</html>
