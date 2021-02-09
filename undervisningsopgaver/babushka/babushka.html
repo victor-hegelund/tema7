@@ -185,9 +185,14 @@
                     klon.querySelector("h2").textContent = ret.navn;
                     klon.querySelector(".pris").textContent = `Pris: ${ret.pris},-`;
                     klon.querySelector(".bio").textContent = ret.kortbeskrivelse;
+                    klon.querySelector("button").addEventListener("click", () => visDetaljer(ret))
                     dest.appendChild(klon);
                 }
             })
+        }
+
+        function visDetaljer(ret) {
+            location.href = `ret.html?id=${ret._id}`;
         }
     </script>
 </body></html>
