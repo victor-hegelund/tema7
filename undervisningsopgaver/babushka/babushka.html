@@ -23,7 +23,8 @@
         }
 
         h1,
-        h2 {
+        h2,
+        h3 {
             color: #1d3557;
             margin-top: 0;
             text-transform: uppercase;
@@ -98,13 +99,77 @@
         .valgt {
             border: solid 2px #1d3557;
         }
+
+        .splash {
+            width: 100vw;
+            margin: -20px -20px 0 -20px;
+        }
+
+        .splash_img {
+            background-image: url(splash.jpg);
+            height: 200px;
+            text-align: center;
+        }
+
+        .splash_text {
+            padding: 80px 0;
+            background-color: rgba(355, 78, 56, 0.4);
+            height: 200px;
+        }
+
+        a {
+            color: #1d3557;
+            font-family: proxima-nova, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        a:hover {
+            color: #e63946;
+        }
+
+        .splash_img a {
+            text-decoration: none;
+            color: #1d3557;
+            font-family: industry-inc-base, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .splash_img a:hover {
+            text-decoration: none;
+            color: #e63946;
+        }
+
+        footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
+            margin: -20px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f1faee;
+        }
+
+        .col {
+            text-align: center;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
     </style>
 
 </head>
 
 <body>
     <header>
-        <h1>Alle</h1>
+        <div class="splash">
+            <div class="splash_img">
+                <h1 class="splash_text"><a href="babushka.html">Babushka</a></h1>
+            </div>
+        </div>
+        <h2>Alle</h2>
         <nav>
             <button data-kategori="alle" class="valgt">Alle</button>
             <button data-kategori="forretter">Forretter</button>
@@ -116,13 +181,31 @@
     </header>
     <section id="liste"></section>
 
+    <footer>
+        <div class="col">
+            <h3>Kontakt</h3>
+            <p>Babushka A/S</p>
+            <p>CVR-nummer: 39766495</p>
+            <p>Grønnegade 97, 8000 Aarhus, Danmark</p>
+            <p><a href="mailto:kontakt@babushka.dk">kontakt@babushka.dk</a></p>
+            <p><a href="tel:+45 50 50 10 10">+45 50 50 10 10</a></p>
+
+
+        </div>
+        <div class="col">
+            <h3>Åbningstider</h3>
+            <p>Man-fre: 10:30 - 22:00</p>
+            <p>Lør-søn: 12:00 - 23:00</p>
+        </div>
+    </footer>
+
     <template>
         <article>
             <div class="img">
                 <img class="imgImg" src="" alt="">
             </div>
             <div class="menukort_tekst">
-                <h2></h2>
+                <h3></h3>
                 <p class="pris"></p>
                 <p class="bio"></p>
                 <div class="button">
@@ -134,7 +217,7 @@
 
 
     <script>
-        const header = document.querySelector("header h1");
+        const header = document.querySelector("header h2");
         const medieurl = "https://babushka-dd8a.restdb.io/media/";
         const myHeaders = {
 
@@ -182,7 +265,7 @@
                     const klon = template.cloneNode(true);
                     console.log(medieurl + ret.billede);
                     klon.querySelector(".imgImg").src = medieurl + ret.billede;
-                    klon.querySelector("h2").textContent = ret.navn;
+                    klon.querySelector("h3").textContent = ret.navn;
                     klon.querySelector(".pris").textContent = `Pris: ${ret.pris},-`;
                     klon.querySelector(".bio").textContent = ret.kortbeskrivelse;
                     klon.querySelector("button").addEventListener("click", () => visDetaljer(ret))
